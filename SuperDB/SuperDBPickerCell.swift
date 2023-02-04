@@ -19,7 +19,7 @@ class SuperDBPickerCell: SuperDBEditCell, UIPickerViewDelegate, UIPickerViewData
         
         set{
             if newValue != nil {
-                var index = (self.values as NSArray).index(of: newValue as Any)
+                let index = (self.values as NSArray).index(of: newValue as Any)
                 if (index != NSNotFound) {
                     self.textField.text = newValue as! String?
                 } else {

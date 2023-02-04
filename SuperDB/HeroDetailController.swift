@@ -8,6 +8,8 @@
 import UIKit
 import CoreData
 
+let _dateFormatter = DateFormatter()
+
 class HeroDetailController: UITableViewController {
     
     var sections: NSArray?
@@ -80,7 +82,12 @@ class HeroDetailController: UITableViewController {
         
         cell.label?.text = (row?.object(forKey: "label") as! String)
         let dataKey = row?.object(forKey: "key") as! String
-        cell.textField?.text = (self.hero?.value(forKey: dataKey)! as AnyObject).debugDescription
+        var _text:String? = self.hero?.value(forKey: dataKey) as? String
+        if cell.isKind(of: SuperDBDateCell.self), let date = self.hero?.value(forKey: dataKey) as? Date {
+            _text = _dateFormatter.string(from: date)
+        }
+        
+        cell.textField?.text = _text
         cell.key = dataKey
         if let _values = row!["values"] as? NSArray {
             (cell as! SuperDBPickerCell).values = _values as [AnyObject]

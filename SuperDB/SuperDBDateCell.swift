@@ -7,8 +7,6 @@
 
 import UIKit
 
-let _dateFormatter = DateFormatter()
-
 class SuperDBDateCell: SuperDBEditCell {
     
     private var datePicker: UIDatePicker!
@@ -22,9 +20,9 @@ class SuperDBDateCell: SuperDBEditCell {
             }
         }
         set{
-            if let _value = newValue as? NSDate {
-                self.datePicker.date = _value as Date
-                self.textField.text = _dateFormatter.string(from: _value as Date)
+            if let _value = newValue as? Date {
+                self.datePicker.date = _value
+                self.textField.text = _dateFormatter.string(from: _value)
             } else {
                 self.textField.text = nil
             }
