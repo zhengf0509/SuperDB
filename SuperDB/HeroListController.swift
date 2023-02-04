@@ -84,6 +84,26 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
 
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedHero = self.fetchedResultsController.object(at: indexPath) as! NSManagedObject
+        self.performSegue(withIdentifier: "jumpToDetail", sender: selectedHero)
+    }
+    
+    // 该方法由performSegue withIdentifier 内部调用
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "jumpToDetail" {
+            return
+        }
+        if let _ = sender as? NSManagedObject {
+            let detailController: HeroDetailController = segue.destination as! HeroDetailController
+            detailController.hero = sender as? NSManagedObject
+        } else {
+            let title = NSLocalizedString("Hero Detail Error", comment: "Hero Detail Error")
+            let message = NSLocalizedString("Error trying to show Hero detail", comment: "Error trying to show Hero detail")
+            self.showAlertWithCompletion(title: title, message: message, ButtonTitle: "Aw nuts", completion: {_ in exit(-1)})
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -97,7 +117,7 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let managedObjectContext = fetchedResultsController.managedObjectContext as NSManagedObjectContext
-        
+
         if editingStyle == .delete {
             // Delete the row from the data source
             managedObjectContext.delete(fetchedResultsController.object(at: indexPath) as! NSManagedObject)
@@ -111,7 +131,7 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
             }
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
 
     /*
@@ -178,7 +198,7 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
         case .delete:
             self.heroTableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
         default:
-            ()
+            return
         }
     }
     
@@ -188,8 +208,10 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
             self.heroTableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
             self.heroTableView.deleteRows(at: [indexPath!], with: .fade)
+        case .move:
+            self.heroTableView.moveRow(at: indexPath!, to: newIndexPath!)
         default:
-            ()
+            return
         }
     }
     
@@ -197,10 +219,11 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
     @objc func insertHero() {
         let managedObjectContext = fetchedResultsController.managedObjectContext as NSManagedObjectContext
         let entity: NSEntityDescription = fetchedResultsController.fetchRequest.entity!
-        NSEntityDescription.insertNewObject(forEntityName: entity.name!, into: managedObjectContext)
+        let newHero = NSEntityDescription.insertNewObject(forEntityName: entity.name!, into: managedObjectContext)
         
         do {
             try managedObjectContext.save()
+            self.performSegue(withIdentifier: "jumpToDetail", sender: newHero)
         } catch {
             self.showAlertWithCompletion(title: "title", message: "message", ButtonTitle: "Aw nuts", completion: {_ in exit(-1)})
 //            let nserror = error as NSError

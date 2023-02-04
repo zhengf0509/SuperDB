@@ -15,6 +15,11 @@
 		6A9D6D90298B814500EAE007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A9D6D8F298B814500EAE007 /* Assets.xcassets */; };
 		6A9D6D93298B814500EAE007 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A9D6D91298B814500EAE007 /* LaunchScreen.storyboard */; };
 		6AE4D7C9298B966000586E7B /* HeroListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4D7C8298B966000586E7B /* HeroListController.swift */; };
+		6AE4D7CB298D753100586E7B /* HeroDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4D7CA298D753100586E7B /* HeroDetailController.swift */; };
+		6AE4D7CD298D7A4000586E7B /* HeroDetailConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6AE4D7CC298D7A4000586E7B /* HeroDetailConfiguration.plist */; };
+		6AE4D7CF298E457100586E7B /* SuperDBEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4D7CE298E457100586E7B /* SuperDBEditCell.swift */; };
+		6AE4D7D1298E554900586E7B /* SuperDBDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4D7D0298E554900586E7B /* SuperDBDateCell.swift */; };
+		6AE4D7D3298E756D00586E7B /* SuperDBPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4D7D2298E756D00586E7B /* SuperDBPickerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		6A9D6D92298B814500EAE007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A9D6D94298B814500EAE007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AE4D7C8298B966000586E7B /* HeroListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroListController.swift; sourceTree = "<group>"; };
+		6AE4D7CA298D753100586E7B /* HeroDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailController.swift; sourceTree = "<group>"; };
+		6AE4D7CC298D7A4000586E7B /* HeroDetailConfiguration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = HeroDetailConfiguration.plist; sourceTree = "<group>"; };
+		6AE4D7CE298E457100586E7B /* SuperDBEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBEditCell.swift; sourceTree = "<group>"; };
+		6AE4D7D0298E554900586E7B /* SuperDBDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBDateCell.swift; sourceTree = "<group>"; };
+		6AE4D7D2298E756D00586E7B /* SuperDBPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBPickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,11 @@
 				6A9D6D94298B814500EAE007 /* Info.plist */,
 				6A9D6D8C298B814400EAE007 /* SuperDB.xcdatamodeld */,
 				6AE4D7C8298B966000586E7B /* HeroListController.swift */,
+				6AE4D7CA298D753100586E7B /* HeroDetailController.swift */,
+				6AE4D7CC298D7A4000586E7B /* HeroDetailConfiguration.plist */,
+				6AE4D7CE298E457100586E7B /* SuperDBEditCell.swift */,
+				6AE4D7D0298E554900586E7B /* SuperDBDateCell.swift */,
+				6AE4D7D2298E756D00586E7B /* SuperDBPickerCell.swift */,
 			);
 			path = SuperDB;
 			sourceTree = "<group>";
@@ -131,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AE4D7CD298D7A4000586E7B /* HeroDetailConfiguration.plist in Resources */,
 				6A9D6D93298B814500EAE007 /* LaunchScreen.storyboard in Resources */,
 				6A9D6D90298B814500EAE007 /* Assets.xcassets in Resources */,
 				6A9D6D8B298B814400EAE007 /* Main.storyboard in Resources */,
@@ -146,6 +162,10 @@
 			files = (
 				6A9D6D88298B814400EAE007 /* ViewController.swift in Sources */,
 				6A9D6D8E298B814400EAE007 /* SuperDB.xcdatamodeld in Sources */,
+				6AE4D7D3298E756D00586E7B /* SuperDBPickerCell.swift in Sources */,
+				6AE4D7CF298E457100586E7B /* SuperDBEditCell.swift in Sources */,
+				6AE4D7D1298E554900586E7B /* SuperDBDateCell.swift in Sources */,
+				6AE4D7CB298D753100586E7B /* HeroDetailController.swift in Sources */,
 				6A9D6D84298B814400EAE007 /* AppDelegate.swift in Sources */,
 				6A9D6D86298B814400EAE007 /* SceneDelegate.swift in Sources */,
 				6AE4D7C9298B966000586E7B /* HeroListController.swift in Sources */,
