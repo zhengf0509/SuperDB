@@ -38,6 +38,7 @@
 		6AE4D7CE298E457100586E7B /* SuperDBEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBEditCell.swift; sourceTree = "<group>"; };
 		6AE4D7D0298E554900586E7B /* SuperDBDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBDateCell.swift; sourceTree = "<group>"; };
 		6AE4D7D2298E756D00586E7B /* SuperDBPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBPickerCell.swift; sourceTree = "<group>"; };
+		6AE4D7D4298EADBE00586E7B /* SuperDB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SuperDB 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +392,7 @@
 		6A9D6D8C298B814400EAE007 /* SuperDB.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				6AE4D7D4298EADBE00586E7B /* SuperDB 2.xcdatamodel */,
 				6A9D6D8D298B814400EAE007 /* SuperDB.xcdatamodel */,
 			);
 			currentVersion = 6A9D6D8D298B814400EAE007 /* SuperDB.xcdatamodel */;
