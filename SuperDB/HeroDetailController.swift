@@ -155,11 +155,12 @@ class HeroDetailController: UITableViewController {
                 _cell = cell as! SuperDBPickerCell
             }
             self.hero?.setValue(_cell.value, forKey: _cell.key)
-            do {
-                try self.hero?.managedObjectContext!.save()
-            } catch {
-                print("Error saving: %@", error)
-            }
+        }
+        
+        do {
+            try self.hero?.managedObjectContext!.save()
+        } catch {
+            print("Error saving: %@", error)
         }
         self.tableView.reloadData()
     }

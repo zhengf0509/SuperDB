@@ -50,6 +50,11 @@ class HeroListController: UITableViewController, UITabBarDelegate, NSFetchedResu
             self.showAlertWithCompletion(title: title, message: message, ButtonTitle: "Aw nuts", completion: {_ in exit(-1)})
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.heroTableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
