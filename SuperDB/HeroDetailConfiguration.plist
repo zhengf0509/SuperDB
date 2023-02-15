@@ -38,6 +38,14 @@
 				</dict>
 				<dict>
 					<key>key</key>
+					<string>age</string>
+					<key>label</key>
+					<string>Age</string>
+					<key>class</key>
+					<string>SuperDBNonEditCell</string>
+				</dict>
+				<dict>
+					<key>key</key>
 					<string>sex</string>
 					<key>label</key>
 					<string>Sex</string>
@@ -48,6 +56,14 @@
 						<string>Male</string>
 						<string>Female</string>
 					</array>
+				</dict>
+				<dict>
+					<key>key</key>
+					<string>favoriteColor</string>
+					<key>label</key>
+					<string>Color</string>
+					<key>class</key>
+					<string>SuperDBColorCell</string>
 				</dict>
 			</array>
 		</dict>

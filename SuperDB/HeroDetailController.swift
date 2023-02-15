@@ -76,15 +76,35 @@ class HeroDetailController: UITableViewController {
             cell = SuperDBDateCell(style: .value2, reuseIdentifier: cellClassName)
         case "SuperDBPickerCell":
             cell = SuperDBPickerCell(style: .value2, reuseIdentifier: cellClassName)
+        case "SuperDBNonEditCell":
+            cell = SuperDBNonEditCell(style: .value2, reuseIdentifier: cellClassName)
+        case "SuperDBColorCell":
+            cell = SuperDBColorCell(style: .value2, reuseIdentifier: cellClassName)
         default:
             cell = SuperDBEditCell(style: .value2, reuseIdentifier: cellClassName)
         }
         
+        cell.hero = self.hero
         cell.label?.text = (row?.object(forKey: "label") as! String)
         let dataKey = row?.object(forKey: "key") as! String
         var _text:String? = self.hero?.value(forKey: dataKey) as? String
         if cell.isKind(of: SuperDBDateCell.self), let date = self.hero?.value(forKey: dataKey) as? Date {
             _text = _dateFormatter.string(from: date)
+        }
+        if cell.isKind(of: SuperDBNonEditCell.self) {
+            let _age = (self.hero as? Hero)!.age! as Int16
+            _text = String(describing: _age)
+        }
+        if cell.isKind(of: SuperDBColorCell.self) {
+            // 使用特性字符串
+            _text = nil;
+            let _color:UIColor? = self.hero?.value(forKey: dataKey) as? UIColor
+            if _color != nil {
+                (cell as! SuperDBColorCell).colorPicker.color = _color!
+                let attributedStr:NSAttributedString = (cell as! SuperDBColorCell).attributtedColorString
+                cell.textField.attributedText = attributedStr
+                cell.textField.attributedPlaceholder = attributedStr
+            }
         }
         
         cell.textField?.text = _text
@@ -146,27 +166,33 @@ class HeroDetailController: UITableViewController {
     
     // MARK: - private
     @objc func save() {
-        self.setEditing(false, animated: true)
         for cell in self.tableView.visibleCells {
             var _cell = cell as! SuperDBEditCell
+            if !_cell.isEditable() {
+                continue
+            }
             if _cell.isKind(of: SuperDBDateCell.self) {
                 _cell = cell as! SuperDBDateCell
             } else if _cell.isKind(of: SuperDBPickerCell.self) {
                 _cell = cell as! SuperDBPickerCell
-            }
+            } else if _cell.isKind(of: SuperDBColorCell.self) {
+                _cell = cell as! SuperDBColorCell
+            } 
             self.hero?.setValue(_cell.value, forKey: _cell.key)
         }
         
         do {
             try self.hero?.managedObjectContext!.save()
+            self.setEditing(false, animated: true)
+            self.tableView.reloadData()
         } catch {
             print("Error saving: %@", error)
         }
-        self.tableView.reloadData()
     }
     
     @objc func cancel() {
         self.setEditing(false, animated: true)
+        self.tableView.reloadData()
     }
 
 }
