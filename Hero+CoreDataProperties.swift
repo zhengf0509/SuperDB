@@ -27,6 +27,13 @@ extension Hero {
     @NSManaged public var sex: String?
     @NSManaged public var favoriteColor: UIColor?
     
+    // 新增的获取属性
+    @NSManaged public var powers: NSSet!
+    @NSManaged public var olderHeroes: NSArray!
+    @NSManaged public var youngerHeroes: NSArray!
+    @NSManaged public var sameSexHeroes: NSArray!
+    @NSManaged public var oppositeSexHeroes: NSArray!
+    
     public override func awakeFromInsert() {
         super.awakeFromInsert()
         self.favoriteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
@@ -67,6 +74,23 @@ extension Hero {
         let outError = NSError(domain: kHeroValidationDomain, code: kHeroValidationNameOrSecretIdentityCode, userInfo: userInfo)
         throw outError
     }
+
+}
+
+// MARK: Generated accessors for relation
+extension Hero {
+
+    @objc(addRelationObject:)
+    @NSManaged public func addToRelation(_ value: Power)
+
+    @objc(removeRelationObject:)
+    @NSManaged public func removeFromRelation(_ value: Power)
+
+    @objc(addRelation:)
+    @NSManaged public func addToRelation(_ values: NSSet)
+
+    @objc(removeRelation:)
+    @NSManaged public func removeFromRelation(_ values: NSSet)
 
 }
 

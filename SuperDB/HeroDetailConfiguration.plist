@@ -18,6 +18,8 @@
 			</array>
 		</dict>
 		<dict>
+			<key>header</key>
+			<string>General</string>
 			<key>rows</key>
 			<array>
 				<dict>
@@ -64,6 +66,23 @@
 					<string>Color</string>
 					<key>class</key>
 					<string>SuperDBColorCell</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>header</key>
+			<string>Powers</string>
+			<key>dynamic</key>
+			<true/>
+			<key>rows</key>
+			<array>
+				<dict>
+					<key>key</key>
+					<string>powers</string>
+					<key>label</key>
+					<string></string>
+					<key>class</key>
+					<string>SuperDBEditCell</string>
 				</dict>
 			</array>
 		</dict>

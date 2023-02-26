@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Hero" representedClassName="Hero" syncable="YES">
+        <attribute name="age" transient="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="birthDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="favoriteColor" optional="YES" attributeType="Transformable"/>
+        <attribute name="name" attributeType="String" minValueString="1" defaultValueString="Unkown Hero"/>
+        <attribute name="secretIdentity" attributeType="String" minValueString="1" defaultValueString="Unknown"/>
+        <attribute name="sex" optional="YES" attributeType="String"/>
+    </entity>
+</model>

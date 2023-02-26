@@ -7,5 +7,23 @@
         <attribute name="name" attributeType="String" minValueString="1" defaultValueString="Unkown Hero"/>
         <attribute name="secretIdentity" attributeType="String" minValueString="1" defaultValueString="Unknown"/>
         <attribute name="sex" optional="YES" attributeType="String"/>
+        <relationship name="powers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Power" inverseName="hero" inverseEntity="Power"/>
+        <fetchedProperty name="olderHeroes" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="$FETCH_SOURCE.birthDate &gt; birthData"/>
+        </fetchedProperty>
+        <fetchedProperty name="oppositeSexHeroes" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="$FETCH_SOURCE.sex != sex"/>
+        </fetchedProperty>
+        <fetchedProperty name="sameSexHeroes" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="($FETCH_SOURCE.sex == sex) &amp;&amp; ($FETCH_SOURCE != SELF)"/>
+        </fetchedProperty>
+        <fetchedProperty name="youngerHeroes" optional="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="$FETCH_SOURCE.birthDate &lt; birthData"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="Power" representedClassName="Power" syncable="YES">
+        <attribute name="name" attributeType="String" defaultValueString="New Power"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hero" inverseName="powers" inverseEntity="Hero"/>
     </entity>
 </model>
